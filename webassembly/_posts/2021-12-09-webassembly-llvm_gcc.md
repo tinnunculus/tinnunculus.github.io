@@ -7,6 +7,12 @@ hide_description: true
 sitemap: false
 ---
 
+**참고**  
+[1]. <https://www.omnisci.com/technical-glossary/llvm>  
+[2]. <https://stackoverflow.com/questions/24836183/what-is-the-difference-between-clang-and-llvm-and-gcc-g>  
+[3]. <https://d2.naver.com/helloworld/8257914>  
+* * *  
+
 * toc
 {:toc}
 

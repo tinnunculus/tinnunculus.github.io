@@ -7,6 +7,10 @@ hide_description: true
 sitemap: false
 ---
 
+**참고**  
+[1]. <https://ko.javascript.info/async-await>  
+* * *  
+
 * toc
 {:toc}
 

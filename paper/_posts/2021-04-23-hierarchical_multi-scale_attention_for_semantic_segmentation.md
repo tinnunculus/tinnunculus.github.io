@@ -7,6 +7,11 @@ hide_description: true
 sitemap: false
 ---
 
+**참고**  
+[1]. Andrew Tao, Karan Sapra, Bryan Catanzaro. Hierarchical Multi-Scale Attention for Semantic Segmentation, 2020  
+[2]. Liang-Chieh Chen, Yi Yang, Jiang Wang, Wei Xu, and Alan L. Yuille. Attention to scale: Scale-aware semantic, image segmentation, 2015  
+* * *  
+
 <p align="center"><img src="/assets/img/paper/HIERARCHICAL_MULTI-SCALE_ATTENTION_FOR_SEMANTIC_SEGMENTATION/3.png"></p>
 Segmentation분야에 대해서는 큰 관심이 없었기 때문에 읽은 논문도 없었다. 이 논문이 첫번째로 읽은 Segmentation관련 논문이라고 볼 수 있고, 이 논문은 현재(2021. 05) Segmentation 평가에서 Sota로 인정받는 논문이다.
 * * *
@@ -29,9 +34,3 @@ Segmentation분야에 대해서는 큰 관심이 없었기 때문에 읽은 논�
 그리고 여러개의 스케일을 조합할 수록 계산량은 그에 비례하여 증가하였다. 이러한 문제를 해결하기 위해 이 논문에서는 Hierarchical한 방법을 채택하였고, 학습과정에서는 인접한 두개의 스케일 조합에 대해서만 학습을 진행하고 inference 할때는 인접한 두개의 스케일의 조합을 여러번 이용하여 이에 비례한 여러 스케일의 조합을 할 수 있도록 하였다. 학습시에 0.5배 스케일과 1배 스케일을 통해 이 두 스케일의 관계성을 학습한다면 이 두 스케일의 관계성은 1배 스케일과 2배 스케일에 대해서도 동일하게 적용될 수 있다는 아이디어이다. 즉, 0.5배 스케일과 1배 스케일의 학습을 통해 0.25배, 0.5배, 1배, 2배의 스케일 조합을 inference 할 수 있다. 
 <br/>
 실험 결과물을 0.5배, 1배, 2배 스케일에서 inference 퍼포먼스가 이전의 결과물과 비교해보면 computer 비용은 이론상 배 이상으로 줄어들지만 결과물의 퀄리티는 큰 차이가 없는 것을 보여주었다.
-
-### 참고문헌
-[1]. Andrew Tao, Karan Sapra, Bryan Catanzaro. Hierarchical Multi-Scale Attention for Semantic Segmentation, 2020
-<br/>
-[2]. Liang-Chieh Chen, Yi Yang, Jiang Wang, Wei Xu, and Alan L. Yuille. Attention to scale: Scale-aware semantic
-image segmentation, 2015.

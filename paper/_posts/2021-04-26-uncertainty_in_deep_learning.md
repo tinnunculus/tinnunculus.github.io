@@ -6,8 +6,10 @@ description: >
 hide_description: true
 sitemap: false
 ---
-Yarin Gal, Uncertainty in Deep Learning. 2016.
-* * *
+
+**참고**  
+[1]. Yarin Gal, Uncertainty in Deep Learning, 2016  
+* * *  
 
 # 1. The Language of Uncertainty
 ## 1.1 Bayesian modelling
@@ -58,8 +60,3 @@ ELBO를 최대화 시키는 파라미터를 구했으면, 즉 최적의 variatio
 <br/>
 <br/>
 ### <Hinton and Van Camp[1993] 작성 중>
-<br/>
-### 참고문헌
-[1]. Yarin Gal, Uncertainty in Deep Learning, 2016
-<br/>
-

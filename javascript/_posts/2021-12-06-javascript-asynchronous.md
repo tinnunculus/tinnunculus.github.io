@@ -7,6 +7,10 @@ hide_description: true
 sitemap: false
 ---
 
+**참고**  
+[1]. 조현영, Node.js 교과서, 길벗(2021), p  
+* * *  
+
 * toc
 {:toc}
 
