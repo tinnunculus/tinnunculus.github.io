@@ -20,7 +20,7 @@ sitemap: false
 > * 기존의 인터프리터의 방식은 유지하되, monitor(aka profiler)라고 부르는 것을 자바스크립트 엔진에 포함시켰다.
 > * monitor는 현재 기본 인터프리터를 통해 실행중인 코드를 보면서, 어떤 코드들이 몇번 반복 사용되는지, 데이터들의 타입은 어떠한 지 확인한다.
 > * 몇번 반복되는 코드 라인을 발견하면, 해당 코드를 **warm**이라고 지칭하고, 더 많이 반복되면 **hot**이라고 지칭하였다.
-> <center><img src="/assets/img/webassembly/jit/1.png" height="100"></center>
+> <center><img src="/assets/img/webassembly/jit/1.png" height="100" width="50"></center>
 
 ## Monitor
 > * 자바스크립트 코드의 런타임 중에 어떤 함수가 실행되면서 warm 코드를 만난다면, monitor는 해당 코드를 컴파일하라고 보내고, 컴파일된 코드를 **stub**이라고 부른다.
@@ -52,10 +52,10 @@ sitemap: false
 > * sum += arr[i]의 stub에서 += operation은 정수형 더하기로 다뤄질 것이다.
 > * 하지만 sum이랑 arr[i]의 더하기는 항상 정수형이라는 것을 보장하지는 못한다. 마지막 인수의 덧셈만 실수형일 수도 있을테니 말이다.
 > * JIT는 위와 같은 문제를 다루기 위해 하나의 코드에 대해서 여러개의 stub들을 만들고 어떤 stub를 고를지 선택할 수 있게 여러 질문 또한 만든다.
-> <center><img src="/assets/img/webassembly/jit/2.png" height="100"></center>
+> <center><img src="/assets/img/webassembly/jit/2.png" height="100" width="50"></center>
 > * 각각의 코드들은 stub의 집합들을 가지고 있다.
 > * JIT는 여전히 코드의 타입을 알기위해 코드를 만날때마다 여러 질문들을 체크해야만한다.
-> <center><img src="/assets/img/webassembly/jit/3.png" height="100"></center>
+> <center><img src="/assets/img/webassembly/jit/3.png" height="100" width="50"></center>
 > * optimzing compiler는 매번 반복해서 타입 체크해야하는 과정을 없애 코드 최적화를 한다.
 > * 라인별로 컴파일하는 것이 아닌 해당 함수(warm up된)를 한번에 컴파일 하는데 타입체크도 미리 한번에 한다.
-> <center><img src="/assets/img/webassembly/jit/4.png" height="100"></center>
+> <center><img src="/assets/img/webassembly/jit/4.png" height="100" width="50"></center>
