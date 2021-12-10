@@ -2,7 +2,8 @@
 layout: post
 title: Javascript in web browser
 description: >
-  자바스크립트의 기초에 대해서 알아보자.
+  [1]. <https://d2.naver.com/helloworld/59361>
+  [2]. <https://ko.javascript.info/hello-world>
 hide_description: true
 sitemap: false
 ---
