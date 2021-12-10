@@ -13,4 +13,4 @@ sitemap: false
 
 * toc
 {:toc}
-<p align="center"><img width="400" src="/assets/img/paper/uncertainty_in_deep_learning/1.png"></p>
+<p align="center"><img width="550" src="/assets/img/paper/uncertainty_in_deep_learning/1.png"></p>

@@ -193,7 +193,7 @@ sitemap: false
 > longEar.walk(); // 동물이 걷습니다.
 > alert(longEar.jumps); // true (rabbit에서 상속받음)
 > ~~~
-> <p align="center"><img src="/assets/img/javascript/object_prototype_inheritance/1.png"></p>  
+> <p align="center"><img width="550" src="/assets/img/javascript/object_prototype_inheritance/1.png"></p>  
 > * 프로토타입 객체를 통해 상위 객체를 수정할 수는 없다.
 > * 수정을 요청할 경우 현재 객체에 새로운 property, method가 추가될 뿐이다.
 > ~~~js
@@ -211,7 +211,7 @@ sitemap: false
 > };
 > rabbit.walk(); // 토끼가 깡충깡충 뜁니다
 > ~~~
-> <p align="center"><img src="/assets/img/javascript/object_prototype_inheritance/2.png"></p>  
+> <p align="center"><img width="550" src="/assets/img/javascript/object_prototype_inheritance/2.png"></p>  
 > ## for..in 반복문과 hasOwnProperty
 > > * Object.keys(obj)는 obj 객체 자신의 키만 반환한다.
 > > * for...in 구문을 사용하면 상속하고 있는 모든 property의 키를 순회한다.
@@ -234,7 +234,7 @@ sitemap: false
 > >     }  
 > > }
 > > ~~~
-> > <p align="center"><img src="/assets/img/javascript/object_prototype_inheritance/3.png"></p>
+> > <p align="center"><img width="550" src="/assets/img/javascript/object_prototype_inheritance/3.png"></p>
 
 ## 함수의 prototype property
 > * 자바스크립트에서는 함수 또한 객체로 인지된다. first class object
@@ -255,7 +255,7 @@ sitemap: false
 > let rabbit = new Rabbit("White Rabbit"); //  rabbit.__proto__ == animal
 > alert( rabbit.eats ); // true
 > ~~~
-> <p align="center"><img src="/assets/img/javascript/object_prototype_inheritance/4.png"></p>  
+> <p align="center"><img width="550" src="/assets/img/javascript/object_prototype_inheritance/4.png"></p>  
 > * 또한 함수의 prototype을 직접 지정하지 않더라도 **모든 함수는** prototype property를 갖는다.
 > * 디폴트 prototype property는 **constructor** method 하나만 있는 객체를 가리킨다. 
 > * 또한 그 constructor method는 함수 자기자신을 가리킨다.(참고로 위의 코드에서는 constructor: function Object 이다)
@@ -264,7 +264,7 @@ sitemap: false
 > function Rabbit(){}
 > let rabbit = new Rabbit();
 > ~~~
-> <p align="center"><img src="/assets/img/javascript/object_prototype_inheritance/5.png"></p>  
+> <p align="center"><img width="550" src="/assets/img/javascript/object_prototype_inheritance/5.png"></p>  
 > * 어떤 객체가 어떤 생성자가 사용되었는지 알 수 없는 경우에 이 방법을 유용하게 쓸 수 있다.
 > * 다만 함수의 기본 prototype property를 바꾸면 constructor 메소드는 Object function을 가리키게 된다.
 > * 이와 같은 문제를 경험하지 않기 위해서는 함수의 prototype property를 직접적으로 바꾸지는 말고 속성을 추가하는 식으로 하자.
@@ -299,7 +299,7 @@ sitemap: false
 > ~~~js
 > let obj = {};
 > ~~~ 
-> <p align="center"><img src="/assets/img/javascript/object_prototype_inheritance/6.png"></p>  
+> <p align="center"><img width="550" src="/assets/img/javascript/object_prototype_inheritance/6.png"></p>  
 
 ## 모든 객체의 Constructor
 > * 자바 스크립트는 모든 것이 객체로 이루어져 있다고 봐도 무방하다.
@@ -310,7 +310,7 @@ sitemap: false
 > let d = 5;
 > alert(f.__proto__ == Function.prototype); // true
 > ~~~
-> <p align="center"><img src="/assets/img/javascript/object_prototype_inheritance/7.png"></p>
+> <p align="center"><img width="550" src="/assets/img/javascript/object_prototype_inheritance/7.png"></p>
 
 ## 프로토타입을 통해 메소드 빌려오기
 > * 한 객체의 메소드를 다른 객체로 복사할 수 있다.

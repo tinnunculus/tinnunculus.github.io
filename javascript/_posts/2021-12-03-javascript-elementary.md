@@ -13,7 +13,7 @@ sitemap: false
 {:toc}
 
 ## 웹페이지 렌더링 절차
-> <p align="center"><img src="/assets/img/javascript/elementary/1.png"></p>
+> <p align="center"><img width="550" src="/assets/img/javascript/elementary/1.png"></p>
 > * 웹 브라우저는 HTML파일과 CSS파일을 해석(파싱)하여 이미지를 그려낸다.
 > * HTML코드 내부에 자바스크립트 코드 혹은 소스파일을 넣어서 사용한다.
 > * DOM(Document Object Model) API : 동적으로 페이지의 스타일을 정하는 등 HTML과 CSS를 알맞게 조정하는 역할.

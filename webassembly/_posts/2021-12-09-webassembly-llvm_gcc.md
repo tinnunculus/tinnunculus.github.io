@@ -19,7 +19,7 @@ sitemap: false
 > * GCC는 언어, 머신마다 다른 컴파일러를 가지고 있고, 각각에 종속적으로 최적화를 시킨다.
 > * 자체 중간 언어인 GIMPLE, RTL을 가지고 있다.
 > * C 소스 코드가 있다면, frontend에서 GCC의 C 컴파일러가 RTL(Register Transfer Language)로 바꿔주고, backend에서 GCC의 특정 머신(intel x86, ARM)에 맞는 컴파일러가 해당 기계어로 바꿔준다.
-> <p align="center"><img src="/assets/img/webassembly/llvm_gcc/1.png"></p>
+> <p align="center"><img width="550" src="/assets/img/webassembly/llvm_gcc/1.png"></p>
 
 ## LLVM
 > * GCC과 마찬가지로 LLVM 또한 컴파일에 관련된 기술들을 개발하는 프로젝트이다.
@@ -31,4 +31,4 @@ sitemap: false
 > * 그 예시로 Clang은 최적화보다 재사용성과 안정성을 추구하고, 최적화는 LLVM에 의존하도록 설계되었다. 이렇게 하면 LLVM IR 코드는 사용자에 의해 재사용및 가공이 될 수 있으며 이는 특정 언어에 대한 독립성을 추구할 수 있다는 뜻이다.
 > * GCC가 LLVM보다 빠르다고 전해졌지만, 최근에는 많이 따라왔다.
 > * GCC가 전통적인 많은 언어를 제공하지만 최신에 나온 언어들은 LLVM이 제공하는 경우도 많다.
-> <p align="center"><img src="/assets/img/webassembly/llvm_gcc/2.png"></p>
+> <p align="center"><img width="550" src="/assets/img/webassembly/llvm_gcc/2.png"></p>

@@ -44,7 +44,7 @@ sitemap: false
 > ~~~
 > 
 > ### Promise 객체의 주요 property
-> > <p align="center"><img src="/assets/img/javascript/promise/1.png"></p>
+> > <p align="center"><img width="550" src="/assets/img/javascript/promise/1.png"></p>
 > > * **state** : 문자열 데이터이며, 처음에는 "pending" 이었다가 excutor에서 resolve 함수가 호출되면 "fulfilled", reject 함수가 호출되면 "reject"로 변환된다.
 > > * **result** : 처음에는 undefined 이며, resolve가 호출되면 value, reject가 호출되면 error를 반환한다.
 > > * 하지만 state, result property 모두 직접 접근할 수 없다. then, catch, finally 메소드를 사용하여 상태나 결과값에 접근해야 한다.
@@ -169,7 +169,7 @@ sitemap: false
 > })
 > // 첫번째 예시와 동일한 프로세스.
 > ~~~
-> <p align="center"><img src="/assets/img/javascript/promise/2.png"></p>
+> <p align="center"><img width="550" src="/assets/img/javascript/promise/2.png"></p>
 > * 아래 코드는 체인으로 연결되지 않는다. 독립적으로 처리할 뿐이다.
 > ~~~js
 > let promise = new Promise(function(resolve, reject){
