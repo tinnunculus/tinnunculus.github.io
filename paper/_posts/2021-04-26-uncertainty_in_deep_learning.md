@@ -1,9 +1,6 @@
 ---
 layout: post
 title: Uncertainty in Deep Learning -writting-
-description: >
-  HIERARCHICAL MULTI-SCALE ATTENTION FOR SEMANTIC SEGMENTATION
-hide_description: true
 sitemap: false
 ---
 

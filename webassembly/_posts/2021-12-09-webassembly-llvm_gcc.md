@@ -1,9 +1,6 @@
 ---
 layout: post
 title: LLVM vs GCC
-description: >
-  두 컴파일러 LLVM과 GCC에 대해서 알아보자.
-hide_description: true
 sitemap: false
 ---
 

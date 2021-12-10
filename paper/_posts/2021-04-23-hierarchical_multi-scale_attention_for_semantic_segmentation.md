@@ -1,9 +1,6 @@
 ---
 layout: post
 title: Hierarchical Multi-Scale Attention for Semantic Segmentation
-description: >
-  HIERARCHICAL MULTI-SCALE ATTENTION FOR SEMANTIC SEGMENTATION
-hide_description: true
 sitemap: false
 ---
 

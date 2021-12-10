@@ -1,10 +1,6 @@
 ---
 layout: post
 title: Javascript in web browser
-description: >
-  [1]. <https://d2.naver.com/helloworld/59361>
-  [2]. <https://ko.javascript.info/hello-world>
-hide_description: true
 sitemap: false
 ---
 

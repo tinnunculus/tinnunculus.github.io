@@ -1,9 +1,6 @@
 ---
 layout: post
 title: Promise
-description: >
-  자바스크립트의 Promise에 대해서 알아보자.
-hide_description: true
 sitemap: false
 ---
 

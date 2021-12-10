@@ -1,9 +1,6 @@
 ---
 layout: post
 title: Background environment of asynchronous function -writting-
-description: >
-  자바스크립트의 비동기의 실행원리에 대해서 알아보자.
-hide_description: true
 sitemap: false
 ---
 

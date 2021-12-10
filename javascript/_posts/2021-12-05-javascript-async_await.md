@@ -1,9 +1,6 @@
 ---
 layout: post
 title: async, await
-description: >
-  자바스크립트의 async와 await에 대해서 알아보자.
-hide_description: true
 sitemap: false
 ---
 

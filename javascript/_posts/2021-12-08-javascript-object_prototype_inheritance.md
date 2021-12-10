@@ -1,9 +1,6 @@
 ---
 layout: post
 title: Object, Prototype, Inheritance
-description: >
-  자바스크립트에서는 클래스의 개념이 없다. 때문에 객체의 개념과 구현이 기존 객체지향언어와 다른 점이 있다. 이에대해 알아본다.
-hide_description: true
 sitemap: false
 ---
 

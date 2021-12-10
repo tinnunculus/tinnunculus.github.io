@@ -1,9 +1,6 @@
 ---
 layout: post
 title: this -writting-
-description: >
-  this는 어떤 객체를 가리키는 것일까..
-hide_description: true
 sitemap: false
 ---
 
