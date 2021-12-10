@@ -5,7 +5,7 @@ sitemap: false
 ---
 
 **참고**  
-[1] <https://ko.javascript.info/async>  
+[1]. <https://ko.javascript.info/async>  
 * * *  
 
 * toc
@@ -44,10 +44,10 @@ sitemap: false
 > ~~~
 > 
 > ### Promise 객체의 주요 property
-> > <p align="center"><img width="550" src="/assets/img/javascript/promise/1.png"></p>
 > > * **state** : 문자열 데이터이며, 처음에는 "pending" 이었다가 excutor에서 resolve 함수가 호출되면 "fulfilled", reject 함수가 호출되면 "reject"로 변환된다.
 > > * **result** : 처음에는 undefined 이며, resolve가 호출되면 value, reject가 호출되면 error를 반환한다.
 > > * 하지만 state, result property 모두 직접 접근할 수 없다. then, catch, finally 메소드를 사용하여 상태나 결과값에 접근해야 한다.
+> > <p align="center"><img width="550" src="/assets/img/javascript/promise/1.png"></p>
 
 ## Promise 객체의 then, catch, finally 메소드
 > * Promise 객체는 excutor 함수의 실행 결과를 처리하기 위해, then, catch, finally 3개의 메소드를 가진다.

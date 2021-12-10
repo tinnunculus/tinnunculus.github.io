@@ -40,6 +40,9 @@ sitemap: false
 ## 최적화 예시: Type specialization
 > * Optimizing Compiler가 최적화하는 방법들은 다양한 방법이 있지만 가장 큰 영향력을 끼치는 방법중 하나가 **Type specialization**이다.
 > * 자바스크립트에서 시행하는 dynamic type system은 런타임에 더 많은 일을 요구한다.
+> * 위의 코드는 실행되면 monitor에 의해서 warm up 될 것이고, baseline compiler는 해당 코드들의 stub를 생성할 것이다.
+> * sum += arr[i]의 stub에서 += operation은 정수형 더하기로 다뤄질 것이다.
+> * 하지만 sum이랑 arr[i]의 더하기는 항상 정수형이라는 것을 보장하지는 못한다. 마지막 인수의 덧셈만 실수형일 수도 있을테니 말이다.
 > ~~~js
 > function arraySum(arr){
 >     var sum = 0;
@@ -48,14 +51,14 @@ sitemap: false
 >     }
 > }
 > ~~~
-> * 위의 코드는 실행되면 monitor에 의해서 warm up 될 것이고, baseline compiler는 해당 코드들의 stub를 생성할 것이다.
-> * sum += arr[i]의 stub에서 += operation은 정수형 더하기로 다뤄질 것이다.
-> * 하지만 sum이랑 arr[i]의 더하기는 항상 정수형이라는 것을 보장하지는 못한다. 마지막 인수의 덧셈만 실수형일 수도 있을테니 말이다.
 > * JIT는 위와 같은 문제를 다루기 위해 하나의 코드에 대해서 여러개의 stub들을 만들고 어떤 stub를 고를지 선택할 수 있게 여러 질문 또한 만든다.
-> <p align="center"><img width="550" src="/assets/img/webassembly/jit/2.png"></p>  
+> <p align="center"><img width="550" src="/assets/img/webassembly/jit/2.png"></p>
+> <br/>
 > * 각각의 코드들은 stub의 집합들을 가지고 있다.
 > * JIT는 여전히 코드의 타입을 알기위해 코드를 만날때마다 여러 질문들을 체크해야만한다.
-> <p align="center"><img width="550" src="/assets/img/webassembly/jit/3.png"></p>  
+> <p align="center"><img width="550" src="/assets/img/webassembly/jit/3.png"></p>
+> <br/>
 > * optimzing compiler는 매번 반복해서 타입 체크해야하는 과정을 없애 코드 최적화를 한다.
 > * 라인별로 컴파일하는 것이 아닌 해당 함수(warm up된)를 한번에 컴파일 하는데 타입체크도 미리 한번에 한다.
-> <p align="center"><img width="550" src="/assets/img/webassembly/jit/4.png"></p>  
+> <p align="center"><img width="550" src="/assets/img/webassembly/jit/4.png"></p>
+> <br/>
