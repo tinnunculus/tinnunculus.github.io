@@ -5,8 +5,8 @@ sitemap: false
 ---
 
 **참고**  
-[1]. Andrew Tao, Karan Sapra, Bryan Catanzaro. Hierarchical Multi-Scale Attention for Semantic Segmentation, 2020  
-[2]. Liang-Chieh Chen, Yi Yang, Jiang Wang, Wei Xu, and Alan L. Yuille. Attention to scale: Scale-aware semantic, image segmentation, 2015  
+[1] Andrew Tao, Karan Sapra, Bryan Catanzaro. Hierarchical Multi-Scale Attention for Semantic Segmentation, 2020  
+[2] Liang-Chieh Chen, Yi Yang, Jiang Wang, Wei Xu, and Alan L. Yuille. Attention to scale: Scale-aware semantic, image segmentation, 2015  
 * * *  
 
 <p align="center"><img src="/assets/img/paper/HIERARCHICAL_MULTI-SCALE_ATTENTION_FOR_SEMANTIC_SEGMENTATION/3.png"></p>

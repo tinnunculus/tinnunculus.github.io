@@ -5,8 +5,8 @@ sitemap: false
 ---
 
 **참고**  
-[1]. 조현영, Node.js 교과서, 길벗(2021), p  
-[2]. <https://ko.javascript.info/function-prototype>  
+[1] 조현영, Node.js 교과서, 길벗(2021), p  
+[2] <https://ko.javascript.info/function-prototype>  
 * * *  
 
 * toc

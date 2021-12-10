@@ -5,7 +5,7 @@ sitemap: false
 ---
 
 **참고**  
-[1]. <https://ko.javascript.info/async>  
+[1] <https://ko.javascript.info/async>  
 * * *  
 
 * toc

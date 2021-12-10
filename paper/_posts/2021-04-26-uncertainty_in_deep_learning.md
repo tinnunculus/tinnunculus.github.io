@@ -5,7 +5,7 @@ sitemap: false
 ---
 
 **참고**  
-[1]. Yarin Gal, Uncertainty in Deep Learning, 2016  
+[1] Yarin Gal, Uncertainty in Deep Learning, 2016  
 * * *  
 
 # 1. The Language of Uncertainty

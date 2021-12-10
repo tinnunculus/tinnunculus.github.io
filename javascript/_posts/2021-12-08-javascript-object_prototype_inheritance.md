@@ -5,7 +5,7 @@ sitemap: false
 ---
 
 **참고**  
-[1]. <https://ko.javascript.info/callbacks>  
+[1] <https://ko.javascript.info/callbacks>  
 * * *  
 
 * toc

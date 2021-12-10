@@ -5,8 +5,8 @@ sitemap: false
 ---
 
 **참고**  
-[1]. <https://d2.naver.com/helloworld/59361>  
-[2]. <https://ko.javascript.info/hello-world>  
+[1] <https://d2.naver.com/helloworld/59361>  
+[2] <https://ko.javascript.info/hello-world>  
 * * *  
 
 * toc
