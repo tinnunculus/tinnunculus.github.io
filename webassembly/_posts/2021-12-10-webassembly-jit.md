@@ -52,11 +52,11 @@ sitemap: false
 > }
 > ~~~
 > * JIT는 위와 같은 문제를 다루기 위해 하나의 코드에 대해서 여러개의 stub들을 만들고 어떤 stub를 고를지 선택할 수 있게 여러 질문 또한 만든다.
-> <p align="center"><img width="550" src="/assets/img/webassembly/jit/2.png"></p>
+> <p align="center"><img src="/assets/img/webassembly/jit/2.png"></p>
 > <br/>
 > * 각각의 코드들은 stub의 집합들을 가지고 있다.
 > * JIT는 여전히 코드의 타입을 알기위해 코드를 만날때마다 여러 질문들을 체크해야만한다.
-> <p align="center"><img width="550" src="/assets/img/webassembly/jit/3.png"></p>
+> <p align="center"><img width="420" src="/assets/img/webassembly/jit/3.png"></p>
 > <br/>
 > * optimzing compiler는 매번 반복해서 타입 체크해야하는 과정을 없애 코드 최적화를 한다.
 > * 라인별로 컴파일하는 것이 아닌 해당 함수(warm up된)를 한번에 컴파일 하는데 타입체크도 미리 한번에 한다.

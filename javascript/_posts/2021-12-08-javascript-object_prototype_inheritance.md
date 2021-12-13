@@ -193,7 +193,7 @@ sitemap: false
 > longEar.walk(); // 동물이 걷습니다.
 > alert(longEar.jumps); // true (rabbit에서 상속받음)
 > ~~~
-> <p align="center"><img width="550" src="/assets/img/javascript/object_prototype_inheritance/1.png"></p>
+> <p align="center"><img width="260" src="/assets/img/javascript/object_prototype_inheritance/1.png"></p>
 > <br/>
 > * 프로토타입 객체를 통해 상위 객체를 수정할 수는 없다.
 > * 수정을 요청할 경우 현재 객체에 새로운 property, method가 추가될 뿐이다.
@@ -212,7 +212,7 @@ sitemap: false
 > };
 > rabbit.walk(); // 토끼가 깡충깡충 뜁니다
 > ~~~
-> <p align="center"><img width="550" src="/assets/img/javascript/object_prototype_inheritance/2.png"></p>  
+> <p align="center"><img width="240" src="/assets/img/javascript/object_prototype_inheritance/2.png"></p>  
 > ## for..in 반복문과 hasOwnProperty
 > > * Object.keys(obj)는 obj 객체 자신의 키만 반환한다.
 > > * for...in 구문을 사용하면 상속하고 있는 모든 property의 키를 순회한다.
@@ -235,7 +235,7 @@ sitemap: false
 > >     }  
 > > }
 > > ~~~
-> > <p align="center"><img width="550" src="/assets/img/javascript/object_prototype_inheritance/3.png"></p>
+> > <p align="center"><img width="300" src="/assets/img/javascript/object_prototype_inheritance/3.png"></p>
 
 ## 함수의 prototype property
 > * 자바스크립트에서는 함수 또한 객체로 인지된다. first class object
@@ -313,7 +313,7 @@ sitemap: false
 > let d = 5;
 > alert(f.__proto__ == Function.prototype); // true
 > ~~~
-> <p align="center"><img width="550" src="/assets/img/javascript/object_prototype_inheritance/7.png"></p>
+> <p align="center"><img src="/assets/img/javascript/object_prototype_inheritance/7.png"></p>
 
 ## 프로토타입을 통해 메소드 빌려오기
 > * 한 객체의 메소드를 다른 객체로 복사할 수 있다.

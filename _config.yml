@@ -58,6 +58,10 @@ menu:
     url:               /node/
   - title:             WEBASSEMBLY
     url:               /webassembly/
+  - title:             CODE ANALYSIS
+    url:               /code_anaysis/
+  - title:             CS
+    url:               /cs/
 
 # Add links to the footer.
 # Typically you'll want to link to your cookie- or privacy policy (if appliable), etc..
