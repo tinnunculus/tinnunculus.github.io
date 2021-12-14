@@ -38,12 +38,15 @@ sitemap: false
 > * 하지만 [JIT](https://tinnunculus.github.io/webassembly/2021-12-10-webassembly-jit/)같은 최적화 기법들도 나오면서 퍼포먼스 측면에서 개선이 되었지만, 여전히 비디오 스트리밍, 그래픽 처리 등에서 여러가지 한계가 있다. 이러한 분야에서 좀 더 최적화와 속도에 중심을 둔 네이티브 언어를 필요로 한다.
 > * 웹어셈블리어는 C, C++ 같은 네이티브 언어를 웹에서 사용할 수 있도록 제공하며, 기존 자바스크립트 언어에 비해 빠르고 안정성있는 환경을 제공한다.
 > * 웹어셈블리어를 직접적으로 다루지 못하더라도 npm을 통해서 다운로드하여 사용할 수도 있다.
+> * 웹어셈블리 코드를 다운로드하고, 컴파일하고, 돌리는 일련의 과정을 온전히 자바스크립트로 제어할 수 있다.
+> * 미래에는 웹어셈블리 모듈이 (script type='module'을 사용해서) ES2015모듈처럼 로드 가능하게 될 거다.
+
 
 ## 웹어셈블리 모듈은 어떻게 만들어지나
 > * C, C++ 소스 코드를 LLVM 베이스의 high-level 컴파일러(Clang)을 사용하여 LLVM IR로 컴파일한다. (Rust언어는 자체 컴파일러인 rustc를 사용해서 wasm 파일을 만들 수 있다)
 > * LLVM IR 코드에서 LLVM 최적화를 한다.
-> * LLVM IR 코드를 LLVM back-end 컴파일러를 사용하여 wasm 모듈을 생성한다.
-> * 하지만 LLVM back-end 컴파일러를 사용하는 방법은 지금 당장 사용할 수 없고, 현재 LLVM 프로젝트에서 개발중이다.
+> * LLVM IR 코드를 wasm 컴파일러를 사용하여 wasm 모듈을 생성한다.
+> * 하지만 wasm 컴파일러를 사용하는 방법은 최적화와 개발툴이 많이 않다.
 > * LLVM IR 코드를 Emscripten 컴파일러를 사용하여 asm.js 파일로 컴파일하고 asm.js파일을 wasm 모듈로 컴파일하는 방법을 쓸 수 있다.
 
 ## 자바스크립트 vs 웹어셈블리 파이프라인
@@ -79,13 +82,20 @@ sitemap: false
 
 ## 웹어셈블리 모듈 어떻게 사용하나
 > * 웹어셈블리 모듈 하나만으로는 브라우저에서 실행시킬 수 없다.
-> * 웹어셈블리언어는 DOM이나 WebGL, WebAudio 같은 플랫폼 API에 직접적인 접근을 할 수 없다. (만들 수는 없는 것인가..?)
+> * 웹어셈블리언어는 DOM이나 WebGL, WebAudio 같은 플랫폼 API에 직접적인 접근을 할 수 없다. 단지 자바스크립트를 호출하면서 정수나 부동소수점 기초 자료형을 넘겨줄 수 있을 뿐이다.
 > * 웹 브라우저에 웹어셈블리 코드를 적용시키기 위해서는 자바스크립트를 통해서만 가야한다.
 > * Emscripten 컴파일러는 컴파일 결과물로 wasm 뿐만 아니라 자바스크립트, HTML 파일도 같이 출력한다.
 > * Emscripten이 생성하는 자바스크립트 코드는 웹어셈블리 모듈을 로드하고 이것을 웹 API와 소통하는것을 가능하게 한다.
 > * Emscripten이 생성하는 HTML 코드는 해당 자바스크립트 파일을 로드하고 웹어셈블리 모듈을 display하는 것을 가능하게 한다.
 > * Emscripten은 자바스크립트와는 다르게 virtual 파일 시스템을 이용해서 local 파일 시스템에 접근을 허용한다.
+> * 웹어셈블리 모듈은 자바스크립트 엔진에서 자바스크립트와 같이 머신에 specific한 어셈블리어로 컴파일된다.
 > <p align="center"><img src="/assets/img/webassembly/what_webassembly/6.png"></p>
+
+## Emscripten의 기능
+> * Emscripten에 대해서는 따로 자세히 다룰 것이므로 여기서는 간단한 역할 소개만 한다.
+> * Emscripten은 POSIX의 일부분과 SDL, OpenGL, OpenAL같은 유명 C/C++ 라이브러리를 직접 구현했다.
+> * 이 라이브러리들은 웹 API 위에서 구현되어야 하는데 웹 API에 웹 어셈블리를 연결시켜주는 자바스크립트 접착제(glue) 코드가 각각의 라이브러리에 있어야한다.
+> * Emscripten을 통해 생성된 HTML 문서는 자바스크립틑 접착제 코드를 불러오고 표준출력(stdout)을 <textarea>에 작성한다. 만약 애플리케이션이 OpenGL을 사용하고있으면 HTML 안에 렌더링 타겟으로 사용되는 <canvas> 엘리먼트가 포함됩니다.
 
 ## 웹어셈블링의 특징
 > * 웹어셈블리어는 함수의 parameter나 return 데이터로 int16 int32 float16 float32만을 사용할 수 있다.
@@ -107,3 +117,5 @@ sitemap: false
 > * wasm 모듈에는 section이라고 불리는게 있다.
 > * Required section : Type, Function, Code
 > * Option section : Export, import, Start, Global, Memory, Table, Data, Element
+> * 자바스크립트 API는 모듈, 메모리, 테이블, 인스턴스를 생성하는 방법을 제공한다.
+> * Section을 사용하는 자세한 방법은 따로 알아보도록 한다.
