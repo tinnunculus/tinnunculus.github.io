@@ -23,7 +23,7 @@ sitemap: false
 > * 컴파일된 모듈을 인스턴스화 하기 위해서는 WebAssembly.Module을 입력으로 취하여 Instance를 resolved하는 Promise를 반환한다.
 > * 또한 출력의 객체에 포함하고 싶은 property는 importObject 객체를 입력으로 넣어주면 되는데, 동일한 이름의 property가 있어야만 가능하다.
 > * 하지만 동일한 역할을 하는데 Streaming 기능이 있는 WebAssembly.instantiateStreaming()을 사용하는 것이 좋다.
-> * 마지막으로 wasm 모듈의 내부 함수들을 자바스크립트에서 사용할 수 있도록 할려면 instance.exports를 사용하면 된다.
+> * wasm 모듈 내부의 것들을 자바스크립트에서 쓸 수 있도록 할려면 우선 wasm 코드에서 export 코드를 통해 내부의 것을 밖으로 전달해야하고, 자바스크립트에서는 instance.exports를 통해 전달받을 수 있다.
 > ~~~js
 > // instatiate 메소드는 wasm 모듈을 컴파일과 동시에 인스턴스화를 한다.
 > var import Object = { // instantiate 메소드의 importObject로 들어갈 객체 인스턴스랑 동일한 프로퍼티를 존재해야만 한다. "imports"
@@ -38,7 +38,7 @@ sitemap: false
 > ).then(bytes =>
 >     WebAssembly.instantiate(bytes, importObject)
 > ).them(result =>
->     result.instance.exports.exported_func() // exported_func은 자바스크립트에서 해당 instance에 있는 함수들을 사용할 수 있도록 한다.
+>     result.instance.exports.exported_func()
 > );
 > ~~~
 > ~~~js
@@ -64,8 +64,9 @@ sitemap: false
 > WebAssembly.compileStraming(fetch('simple.wasm')).then(mod => // compileStraming 메소드는 .wasm 을 컴파일만 해준다.
 >     worker.postMessage(mod));
 > ~~~
+
 ## WebAssembly.instantiateStreaming()
-> * WebAssemblt.instantiate()와 사용하는 방식은 동일하지만 스트리밍을 지원해서 ArrayBuffer가 아니라 fetch("~.wasm")의 response를 입력으로 받는다.
+> * WebAssemblt.instantiate()와 사용하는 방식은 동일하지만 스트리밍을 지원해서 ArrayBuffer가 아니라 fetch의 response를 입력으로 받는다.
 > ~~~js
 > var import Object = {
 >     imports: {
