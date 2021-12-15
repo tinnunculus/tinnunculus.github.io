@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Uncertainty in Deep Learning -writting-
+title: Uncertainty in Deep Learning
 sitemap: false
 ---
 

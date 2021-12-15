@@ -1,6 +1,6 @@
 ---
 layout: post
-title: this -writting-
+title: this 
 sitemap: false
 ---
 

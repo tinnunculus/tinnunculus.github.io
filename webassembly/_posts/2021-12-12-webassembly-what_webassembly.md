@@ -95,7 +95,6 @@ sitemap: false
 > * Emscripten에 대해서는 따로 자세히 다룰 것이므로 여기서는 간단한 역할 소개만 한다.
 > * Emscripten은 POSIX의 일부분과 SDL, OpenGL, OpenAL같은 유명 C/C++ 라이브러리를 직접 구현했다.
 > * 이 라이브러리들은 웹 API 위에서 구현되어야 하는데 웹 API에 웹 어셈블리를 연결시켜주는 자바스크립트 접착제(glue) 코드가 각각의 라이브러리에 있어야한다.
-> * Emscripten을 통해 생성된 HTML 문서는 자바스크립틑 접착제 코드를 불러오고 표준출력(stdout)을 <textarea>에 작성한다. 만약 애플리케이션이 OpenGL을 사용하고있으면 HTML 안에 렌더링 타겟으로 사용되는 <canvas> 엘리먼트가 포함됩니다.
 
 ## 웹어셈블링의 특징
 > * 웹어셈블리어는 함수의 parameter나 return 데이터로 int16 int32 float16 float32만을 사용할 수 있다.
