@@ -227,7 +227,7 @@ WebAssembly.instantiateStreaming(fetch('test.wasm'), importObject)
 >     console.log(resolve.instance.exports.callByIndex(1)); // 42
 >     console.log(resolve.instance.exports.callByIndex(2)); // error
 > })
-> )~~~
+> ~~~
 
 ## Mutating Tables and dynamic linking
 > * 자바스크립트는 wasm 코드의 함수 참조에 대한 모든 접근 권한이 있다.
