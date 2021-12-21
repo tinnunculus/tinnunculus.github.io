@@ -139,3 +139,91 @@ class Button{
 let button = new Button("안녕하세요.");
 setTimeout(button.click, 1000); // 안녕하세요.
 ~~~
+
+## 클래스 상속
+* 자바스크립트는 프로토타입 기반의 언어이기 때문에 클래스르 만든다고 하더라도 내부적으로는 프로토타입 기반으로 구현된다.
+* 아래의 코드는 Animal 클래스를 만들고 Animal 클래스를 상속하는 Rabbit 클래스를 만드는 코드이다.
+* Rabbit 클래스는 constructor 함수를 작성하지 않았다. 그렇다면 Animal 클래스에서 constructor를 불러와서 쓴다.
+~~~js
+class Animal {
+    constructor(name) {
+        this.speed = 0;
+        this.name = name;
+    }
+    run(speed) {
+        this.speed = speed;
+        alert(`${this.name} 은/는 속도 ${this.speed}로 달립니다.`);
+    }
+    stop() {
+        this.speed = 0;
+        alert(`${this.name} 이/가 멈췄습니다.`);
+    }
+}
+class Rabbit extends Animal {
+  hide() {
+    alert(`${this.name} 이/가 숨었습니다!`);
+  }
+}
+let animal = new Animal("동물");
+let rabbit = new Rabbit("흰 토끼");
+rabbit.run(5); // 흰 토끼 은/는 속도 5로 달립니다.
+rabbit.hide(); // 흰 토끼 이/가 숨었습니다!
+~~~
+<p align="center"><img width="500" src="/assets/img/javascript/class/2.png"></p>
+
+## 조건마다 다른 클래스르 상속하는 클래스 만들기
+* 자바스크립트의 클래스는 사실상 함수이기 때문에 함수의 리턴문으로 사용할 수 있다
+* 그렇기 때문에 extends class 구문에 class 대신 함수의 리턴문을 넣을 수도 있다.
+* 조건에 따라 다양한 클래스를 넣기 위해서 사용하기에 좋다.
+~~~js
+// 각기 다른 sayHi 함수를 가진 클래스를 상속하기 위한 것
+function f(phrase){
+    return class{
+        sayHi(){ console.log(phrase); }
+    }
+}
+class User extends f(phrase) {}
+new User().sayHi();
+~~~
+
+## constructor 오버라이딩
+* 클래스의 constructor가 비어있다면 디폴트로 constructor 함수를 만들고 부모 클래스의 constructor 함수를 실행시킨다.
+* 상속을 한 클래스에서는 **반드시** 부모 클래스의 constructor 함수를 먼저 실행시켜주어야 한다. 안하면 오류남
+* 자바스크립트에서는 상속한 클래스의 constructor 함수에서는 상속하지 않은 클래스의 constructor 함수와 다른 특수 내부 property인 [[constructor]]: "derived" 가 존재한다.
+* 일반 클래스 constructor와 상속 클래스의 constructor에는 new 연산자와 함께 차이가 난다.
+* 일반 클래스의 constructor가 new와 함께 실행되면, 빈 객체가 만들어지고 this에 이 객체를 할당한다.
+* 상속 클래스의 constructor가 new와 함께 실행되면, 빈 객체가 만들어지고 this에는 아무런 객체를 할당하지 않는다.
+* 따라서 부모 클래스(일반 클래스)의 constructor를 실행시켜주어 this에 객체를 할당시켜줘야 한다.
+~~~js
+class Animal{
+    constructor(name){this.name = name;}
+}
+class Rabbit extends Animal{
+    constructor(name, age){ this.name = name; this.age = age;} // 오류
+    constructor(name, age){ super(name); this.age = age;} // 정상
+}
+rabbit = new Rabbit("jy", 20);
+~~~
+
+## 클래스 필드의 오버라이딩
+* 클래스는 메소드 뿐만 아니라 내부 필드도 오버라이디 할 수 있다.
+* 필드의 초기화 순서가 일반 클래스와 상속한 클래스가 다르기 때문에 주의해서 사용할 필요가 있다.
+* 일반 클래스의 필드는 constructor 실행 이전에 초기화 된다.
+* 상속한 클래스의 필드는 constructor 실행 이후에 초기화 된다.
+~~~js
+class Animal{
+    name = 'animal'
+    constructor(){
+        alert(this.name);
+    }
+    showfield(){
+        alert(this.name);
+    }
+}
+class Rabbit extends Animal{
+    name = 'rabbit';
+}
+animal = new Aminal(); // animal
+rabbit = new Rabbit(); // animal
+rabbit.showfield(); // rabbit
+~~~

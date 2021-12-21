@@ -177,18 +177,18 @@ sitemap: false
 > * prototype object는 하나의 객체만 설정할 수 있다.
 > ~~~js
 > let animal = {
->   eats: true,
->   walk() {
->     alert("동물이 걷습니다.");
->   }
+>     eats: true,
+>     walk() {
+>         alert("동물이 걷습니다.");
+>     }
 > };
 > let rabbit = {
->   jumps: true,
->   __proto__: animal
+>     jumps: true,
+>     __proto__: animal
 > };
 > let longEar = {
->   earLength: 10,
->   __proto__: rabbit
+>     earLength: 10,
+>     __proto__: rabbit
 > };
 > longEar.walk(); // 동물이 걷습니다.
 > alert(longEar.jumps); // true (rabbit에서 상속받음)
