@@ -6,7 +6,7 @@ sitemap: false
 
 **참고**  
 [1] <https://ko.javascript.info/class>  
-[2]
+[2] <https://ko.javascript.info/static-properties-methods>
 * * *  
 
 ## 자바스크립트에서 클래스는 사실 함수
@@ -226,4 +226,43 @@ class Rabbit extends Animal{
 animal = new Aminal(); // animal
 rabbit = new Rabbit(); // animal
 rabbit.showfield(); // rabbit
+~~~
+
+## static method in class
+* 클래스의 필드처럼 클래스의 prototype이 아닌 클래스 함수 자체에 method를 설정할 수도 있다
+* 이런 method를 static method라고 부른다
+* static이라 부르는 이유는 객체를 생성하지 않고도 클래스 함수 자체만으로 접근할 수 있기 때문이 아닐까
+* static method는 클래스의 method를 직접적으로 할당하는 것과 동일하다
+* static method의 this는 클래스 함수(객체) 자체가 된다.
+~~~js
+class Article{
+    constructor(title, date){
+        this.title = title;
+        this.date = date;
+    }
+    static compare(articleA, articleB){
+        return articleA.date - articleB.date;
+    }
+}
+let articles = [
+    new Article("HTML", new Date(2019, 1, 1)),
+    new Article("CSS", new Date(2019, 0, 1)),
+    new Article("JS", new Date(2019, 11, 1))
+];
+console.log(articles.sort(Article.compare)); // 클래스 함수(객체) 자체가 this가 되어 날라가는 모습
+////////////////////////////////////////
+//// 클래스 뿐만 아니라 일반 객체에서도 성립 ////
+function Article(){
+    this.title = arguments[0];
+    this.date = arguments[1];
+}
+Article.compare = function(articleA, articleB){
+    return articleA.date - articleB.date;
+}
+let articles = [
+    new Article("HTML", new Date(2019, 1, 1)),
+    new Article("CSS", new Date(2019, 0, 1)),
+    new Article("JS", new Date(2019, 11, 1))
+];
+console.log(articles.sort(Article.compare)); // 클래스 함수(객체) 자체가 this가 되어 날라가는 모습
 ~~~
