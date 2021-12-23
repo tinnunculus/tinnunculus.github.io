@@ -122,3 +122,10 @@ sitemap: false
 > ~~~
 > * [[HomeObject]] 메소드에서만 정의가 된다. 하지만 method()의 형태로 정의해야만 한다. method: function() 형태로 정의해서는 안된다.
 > * method: function(){...} 내부에서 super를 사용할 경우 SyntaxError가 발생한다.
+
+## 화살표 함수
+* 화살표 함수는 function을 __proto__를 가지긴 하지만, prototype property를 가지지 않는다.
+~~~js
+let test = () => {};
+console.log(test.prototype); // undefined
+~~~
