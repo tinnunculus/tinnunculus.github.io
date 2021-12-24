@@ -6,9 +6,9 @@ sitemap: false
 
 **참고**  
 [1] <https://ko.javascript.info/class>  
-[2] <https://ko.javascript.info/static-properties-methods>
-[3] <https://ko.javascript.info/private-protected-properties-methods>
-[4] <https://ko.javascript.info/extend-natives>
+[2] <https://ko.javascript.info/static-properties-methods>  
+[3] <https://ko.javascript.info/private-protected-properties-methods>  
+[4] <https://ko.javascript.info/extend-natives>  
 [5] <https://ko.javascript.info/mixins>
 * * *  
 
@@ -138,6 +138,7 @@ sitemap: false
 >     click = () => { // class field // 화살표 함수로 만들어줘야만 this가 객체로 바인딩된다.
 >         console.log(this.value);
 >     }
+>     click = function(){ console.log(this.value); }
 > }
 > let button = new Button("안녕하세요.");
 > setTimeout(button.click, 1000); // 안녕하세요.
@@ -447,5 +448,5 @@ sitemap: false
 > }
 > Object.assign(User.prototype, sayHiMixin); // sasyHiMixin에 있는 메소드들을 User.prototype 객체에 복사한다.
 > new User("Dude").sayHi();
-> ~~~
+> ~~~ 
 > <p align="center"><img width="500" src="/assets/img/javascript/class/5.png"></p>
