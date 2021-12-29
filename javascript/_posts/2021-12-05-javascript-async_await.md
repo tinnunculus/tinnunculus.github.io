@@ -12,20 +12,20 @@ sitemap: false
 {:toc}
 
 ## async 함수
-> * **function** 앞에 async를 붙이면 해당 함수는 항상 Promise 객체를 반환한다.
+> * **function 앞에 async**를 붙이면 해당 함수는 **항상 Promise 객체를 반환**한다.
 > * Promise가 아닌 값(value)를 반환하더라도 이행된(resolved) Promise 객체가 반환되도록 한다.
 > * Promise가 resolved 되었다는 것은 excutor 함수가 실행되었다는 소리이다. resolved(value)
 > ~~~js
 > async function f() {
->     return 1;
+>     return 1; // return new Promise(() => resolve(1));
 > }
 > f().then(alert); // 1
 > ~~~
 
 ## await
 > * Promise 객체의 excutor 함수의 결과물은 then, catch, finally 메소드로만 받을 수 있었다. 하지만 이 메소드들은 background에서 비동기적으로 실행된다.
-> * await는 excutor 함수의 결과물을 다루는 방법 중 하나로 then 메소드와는 다르게 동기적(결과가 처리될 때까지 기다림)으로 처리한다.
-> * await는 **async** 함수 블록 안에서만 동작한다.
+> * **await는 excutor 함수의 결과물을 다루는 방법 중 하나**로 then 메소드와는 다르게 **동기적(결과가 처리될 때까지 기다림)으로 처리**한다.
+> * await는 **async** 함수 블록 안에서만 동작한다... 왜 이렇게 만든지는 모르겟지만...
 > ~~~js
 > // then 메소드 이용
 > // 1, 3, 2 출력
@@ -77,7 +77,7 @@ sitemap: false
 > > ~~~
 
 ## 에러 핸들링
-> * await는 기존의 then, catch 에러 핸들링과 다르게 함수 블럭 안에 try...catch 구문을 사용할 수 있다.
+> * await는 기존의 then, catch 에러 핸들링과 다르게 함수 블럭 안에 try...catch 구문을 사용할 수 있다. 비동기는 try...catch 구문을 사용할 수 없다.
 > ~~~js
 > async function practice() {
 >     try{
@@ -117,7 +117,7 @@ sitemap: false
 >     img.src = githubUser.avatar_url;
 >     img.className = "promise-avatar-example";
 >     document.body.append(img);
->     await new Promise((resolve, reject) => setTimeout(resolve, 3000));
+>     await new Promise((resolve, reject) => setTimeout(resolve, 3000)); // 단순히 3초 기다림.
 >     img.remove();
 >     return githubUser;
 > }

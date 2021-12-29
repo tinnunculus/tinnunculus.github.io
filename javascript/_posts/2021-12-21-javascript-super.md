@@ -9,16 +9,15 @@ sitemap: false
 * * *  
 
 ## super
-> * 상속 받은 클래스의 **메소드**를 사용하고 싶을 때 super를 이용한다.
+> * 상속한 클래스의 **메소드**를 사용하고 싶을 때 super를 이용한다.
 > * 혹은 prototype 객체의 **메소드**를 사용하고 싶을 때 super를 이용한다.
-> * 자기 자신의 메소드도 존재하고 상속받은 클래스의 메소드도 존재할 때 그냥 메소드 실행하면 자신의 메소드가 실행되는데 상속 받은 클래스의 메소드를 실행시키고 싶을 때 유용하다.
 > ~~~js
 > class Animal{
 >     constructor(){}
 >     stop(){ console.log("멈춰~!")}
 > }
 > class Rabbit extends Animal {
->     stop(is_super=false){
+>     stop(is_super){
 >         if (is_super==true){
 >             super.stop();
 >         } else {
@@ -71,7 +70,7 @@ sitemap: false
 
 ## [[HomeObject]]
 > * super는 this를 통해 구현할 수 없다.
-> * [[HomeObject]]라는 함수 전용 특수 property를 이용하면 해결할 수 있다.
+> * [[HomeObject]]라는 **함수 전용** 특수 property를 이용하면 해결할 수 있다.
 > * [[HomeObject]]는 this처럼 해당 객체가 저장된다.
 > * super는 [[Homeobject]]를 이용해서 parent 객체를 찾고 처음 호출할 당시 자신의 객체(this)를 유지한다.
 > ~~~js
@@ -96,8 +95,8 @@ sitemap: false
 > };
 > longEar.eat(); // this는 longEar가 들어간다. super가 HomeObject를 통해 그렇게 되도록 유지한다.
 > ~~~
-> * [[HomeObject]] property는 변경할 방법이 없다. 그렇기 때문에 함수(객체)가 생성될 때 고정되어 정해진다.
-> * 하지만 자바스크립트에서 함수나 객체는 자유롭게 복사되거나 바인딩 객체가 변할 수도 있다.
+> * [[HomeObject]] property는 **변경할 수 없다**. 그렇기 때문에 함수(객체)가 생성될 때 **고정**되어 정해진다.
+> * 하지만 자바스크립트에서 **함수나 객체는 자유롭게 복사되거나 바인딩 객체가 변할 수도 있다**.
 > * [[HomeObject]] property는 super 내부에서만 유효하다. 하지만 복사와 바인딩을 super와 함께사용한다면 문제가 될 수 있다.
 > * 아래의 코드를 보면 tree.sayHi() 메소드는 rabbit.sayHi() 메소드를 **복사**해 쓴다.
 > * 하지만 복사한 메소드는 rabbit에 의해 생성된 함수이므로 함수의 [[HomeObject]] property는 rabbit이다.
@@ -124,7 +123,7 @@ sitemap: false
 > * method: function(){...} 내부에서 super를 사용할 경우 SyntaxError가 발생한다.
 
 ## 화살표 함수
-* 화살표 함수는 function을 __proto__를 가지긴 하지만, prototype property를 가지지 않는다.
+* 화살표 함수는 function을 __proto__를 가지긴 하지만, **prototype property를 가지지 않는다**.
 ~~~js
 let test = () => {};
 console.log(test.prototype); // undefined

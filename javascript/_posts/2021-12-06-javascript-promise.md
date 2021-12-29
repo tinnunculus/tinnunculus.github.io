@@ -12,13 +12,13 @@ sitemap: false
 {:toc}
 
 ## Promise란..?
-> * Promise는 기본적으로 객체이다.
-> * Promise는 함수(excutor)를 인자로 받고 객체가 생성될 때, 해당 함수가 실행된다.
-> * excutor 함수는 두개의 **함수**를 인자로 받는다.
-> * resolve와 reject는 자바스크립트에서 제공하는 함수이다.
-> * Promise는 성공 또는 실패만 한다. 따라서 executor 함수 내에서 resolve(성공)와 reject(실패) 함수 둘 중 하나는 반드시 콜 해야한다.
-> * 또한 한번만 호출되어야 한다. 두번 이상 호출되면 두번째 호출부터는 실행되지 않는다.
-> * resolve 함수와 reject 함수는 기본적으로 callback 함수이다.
+> * Promise는 기본적으로 **객체**이다.
+> * Promise는 **함수(excutor)**를 인자로 받고 객체가 생성될 때, 해당 함수가 실행된다.
+> * excutor 함수는 **두개의 함수**를 인자로 받는다.
+> * **resolve와 reject**는 자바스크립트에서 제공하는 함수이다.
+> * Promise는 **성공 또는 실패만 한다.** 따라서 executor 함수 내에서 resolve(성공)와 reject(실패) 함수 둘 중 하나는 반드시 콜 해야한다.
+> * 또한 **한번만** 호출되어야 한다. 두번 이상 호출되면 두번째 호출부터는 실행되지 않는다.
+> * resolve 함수와 reject 함수는 기본적으로 **callback** 함수이다. 
 > * excutor 함수가 실행되고 내부에서 resolve, reject 함수가 실행되면 resolve 함수와 reject함수는 background에 보내지고 바로 스택에 쌓인다.
 > ~~~js
 > // resolve와 reject는 callback 함수이기 때문에 then 메소드는 바로 실행되지 않고 background로 넘어간 이후에 비동기로 실행된다. 따라서 console에 2, 5, 4, 1 순서로 찍힌다.
@@ -35,7 +35,7 @@ sitemap: false
 > ~~~js
 > // resolve 호출
 > let promise = new Promise(function(resolve, reject){
->     setTimeout(() => resolve("done"), 1000);    
+>     setTimeout(() => resolve("done"), 1000);
 > });
 > // reject 호출
 > let promise2 = new Promise(function(resolve, reject){
@@ -46,14 +46,16 @@ sitemap: false
 > ### Promise 객체의 주요 property
 > > * **state** : 문자열 데이터이며, 처음에는 "pending" 이었다가 excutor에서 resolve 함수가 호출되면 "fulfilled", reject 함수가 호출되면 "reject"로 변환된다.
 > > * **result** : 처음에는 undefined 이며, resolve가 호출되면 value, reject가 호출되면 error를 반환한다.
-> > * 하지만 state, result property 모두 직접 접근할 수 없다. then, catch, finally 메소드를 사용하여 상태나 결과값에 접근해야 한다.
+> > * 하지만 state, result property 모두 직접 접근할 수 없다.(심볼로 설정되어 있나?? 아예 undefined가 나온다. 이유는 모르겟다.)
+> > * then, catch, finally 메소드를 사용하여 상태나 결과값에 접근해야 한다.
 > > <p align="center"><img width="550" src="/assets/img/javascript/promise/1.png"></p>
 
 ## Promise 객체의 then, catch, finally 메소드
 > * Promise 객체는 excutor 함수의 실행 결과를 처리하기 위해, then, catch, finally 3개의 메소드를 가진다.
 > 
 > ### then 메소드
-> > * 두개의 함수를 인자로 받는다. 각각의 함수는 인자를 하나씩 가지고 있고, 첫번째 함수는 promise가 resolve 되었을 때 실행되는 함수이고, 두번째 함수는 promise가 reject 되었을 때 실행되는 함수이다.
+> > * **resolve나 reject 이벤트**가 발생하면 콜되는 함수이다.
+> > * **두개**의 함수를 인자로 받는다. 각각의 함수는 인자를 하나씩 가지고 있고, **첫번째 함수는 promise가 resolve 되었을 때** 실행되는 함수이고, **두번째 함수는 promise가 reject 되었을 때** 실행되는 함수이다.
 > > ~~~js
 > > let promise = new Promise(function(resolve, reject){
 > >     setTimeout(() => resolve("done!"), 1000);
@@ -70,17 +72,9 @@ sitemap: false
 > > promise.then(result => alert(result), error => alert(error));
 > > promise.then(error => alert(error)) // 오류!! 작업이 실패한 경우를 then으로 다루고 싶아면 항상 두 인자 모두 적어줘야함.
 > > ~~~
-> > * resolve(1) 함수가 일찍 콜 되었다고 해서 then 함수가 resolve(1) 뒤에 있는 코드들보다 빨리 실행되지는 않는다.
-> > * 주의점) 콜백 함수로 에러 처리를 했을때(error first callback), 에러 인자를 왼쪽에 썼었는데 then 함수는 오른쪽에 에러 인자로 사용한다.
-> > ~~~js
-> > let promise = new Promise((resolve, reject) => {
-> >     resolve(1);
-> >     // ...
-> > }).then(result => {...})
-> > ~~~
 > 
 > ### catch 메소드
-> > * 에러가 발생한 경우만 다루고 싶다면, **then(null, new Error)** 같이 첫번째 인자를 **null**로 전달하면 되는데, 이와 같은 구문을 catch(new Error)를 써도 같은 작동을 합니다. 
+> > * 에러가 발생한 경우만 다루고 싶다면, **then(null, new Error)** 같이 첫번째 인자를 **null**로 전달하면 되는데, 이와 같은 구문을 **catch(new Error)**를 써도 같은 작동을 합니다. 
 > > ~~~js
 > > let promise = new Promise(function(resolve, reject){
 > >     setTimeout(() => reject(new Error("error")), 1000);
@@ -89,7 +83,7 @@ sitemap: false
 > > ~~~
 > 
 > ### finally 메소드
-> > * promise의 성공과 실패의 상관없이 마지막에 실행이 됨. 인자는 함수 하나를 받는데 해당 함수는 인자를 갖지 않음(전달 받는게 없다).
+> > * promise의 **성공과 실패의 상관없이 마지막에 실행이 됨.** 인자는 함수 하나를 받는데 해당 함수는 인자를 갖지 않음(전달 받는게 없다).
 > > ~~~js
 > > let promise = new Promise(function(resolve, reject){
 > >     setTimeout(() => reject(new Error("error")), 1000);
@@ -106,13 +100,14 @@ sitemap: false
 > function loadScript(src, callback){
 >     let script = document.createElement('script');
 >     script.src = src;
->     script.onload = () => callback(null, script);
->     script.onerror = () => callback(new Error("에러발생"));
+>     script.onload = () => callback(script);
+>     script.onerror = () => callback(null, new Error("에러발생"));
 >     document.head.append(script);
 > }
-> loadScrript('test.js', (error, script) => {alert(script.src);});
+> loadScrript('test.js', (script, error) => {alert(script.src);});
+> ~~~
+> ~~~js
 > // promise
-> // resolve 함수와 reject 함수 두개가 실행된 것처럼 보이지만 onload와 onerror는 이벤트 기반의 함수이기 때문에 둘 중 하나만 call 된다. 
 > function loadScript(src){
 >     return new Promise(function(resolve, reject){
 >         let script = document.createElement('script');
@@ -124,14 +119,13 @@ sitemap: false
 > }
 > let promise = loadScript("test.js");
 > promise.then(script => alert("good"));
-> promise.catch(error => alert(error));
+> promise.catch(error => alert(error)); // or promise.then((null, error) => alert(error));
 > ~~~
 
 ## 프라미스 체이닝
-> * 비동기 작업을 순차적으로 처리하도록 함.
-> * 원래는 excutor 함수 내에서 resolve 함수나 reject 함수가 호출되면 then 메소드의 인자로 들어간 함수가 호출된다고 했었다.
-> * 아래 코드에서 보면 then 메소드의 인자 함수는 value를 리턴한다. 하지만 then 함수는 promise 객체를 리턴한다.
-> * 또한 then 메소드의 인자 함수가 value를 리턴한다면 then함수는 리턴한 promise 객체의 resolve(value) 함수를 call해서 다음 then 함수가 호출되도록 할 수 있다.
+> * 비동기 작업을 **순차적으로** 처리하도록 함.
+> * 아래 코드에서 보면 then 메소드의 인자 함수는 **value**를 리턴한다. 하지만 **then 함수는 promise 객체**를 리턴한다.
+> * 또한 then 메소드의 인자 함수가 value를 리턴한다면 then 함수는 리턴한 promise 객체의 resolve(value) 함수를 call 해서 다음 then 함수가 호출되도록 할 수 있다.
 > * 따라서 아래 코드는 console에 2, 4, 8이 찍힌다.  
 > ~~~js
 > new Promise(function(resolve, reject) {
@@ -167,10 +161,9 @@ sitemap: false
 >         resolve(result*2);
 >     })
 > })
-> // 첫번째 예시와 동일한 프로세스.
 > ~~~
 > <p align="center"><img width="550" src="/assets/img/javascript/promise/2.png"></p>
-> * 아래 코드는 체인으로 연결되지 않는다. 독립적으로 처리할 뿐이다.
+> * 아래 코드는 체인으로 연결되지 않는다. **독립적으로** 처리할 뿐이다.
 > ~~~js
 > let promise = new Promise(function(resolve, reject){
 >     setTimeout(() => resolve(1), 1000);
@@ -190,9 +183,9 @@ sitemap: false
 > ~~~
 > 
 > ### Promise 체이닝 추가 예시
-> > ~~~js
-> > * 아래 코드는 Promise 객체를 변수에 저장하지 않고 바로 생성해서 then 메소드를 붙여준 것.
+> > * 아래 코드는 **Promise 객체를 변수에 저장하지 않고** 바로 생성해서 then 메소드를 붙여준 것.
 > > * Promise 객체는 생성과 동시에 excutor 함수가 실행되기 때문에 then 메소드가 순차적으로 콜된다.  
+> > ~~~js
 > > new Promise(function(resolve, reject){
 > >     setTimeout(() => resolve(1), 1000);  
 > > }).then(function(result){
@@ -224,9 +217,10 @@ sitemap: false
 
 ## Thenable
 > * Promise의 then 메소드는 Promise 객체를 반환하거나, Value를 반환할 경우 자체적으로 Promise 객체를 생성 및 반환한다.
-> * 하지만 Promise객체의 then 메소드가 아닌 then 메소드를 가지는 다른 객체를 반환할 수도 있다.
-> * 이러한 객체를 thenable 객체라고 부르며, then 메소드를 가지고 있어야 하며, (resolve, reject) 인자를 가지는 함수여야만 한다.
-> * thenable 객체의 then 메소드는 resolve(result)를 호출하거나, reject(error)를 호출해야만 한다.
+> * 하지만 Promise 객체의 then 메소드가 아닌 **then 메소드를 가지는 다른 객체**를 반환할 수도 있다.
+> * 이러한 객체를 thenable 객체라고 부르며, **then 메소드를 가지고 있어야 하며**, **(resolve, reject) 인자를 가지는 함수**여야만 한다.
+> * 사실상 then 메소드가 아닌 **excutor 함수**를 가지는 객체라고 볼 수 있다.
+> * thenable 객체의 then 메소드는 **resolve(result)를 호출하거나, reject(error)를 호출해야만 한다**.
 > ~~~js
 > function Thenable(){
 >     this.num = 2;
@@ -237,12 +231,12 @@ sitemap: false
 > new Promise(resolve => resolve(1))
 > .then(result => {
 >     return new Thenable();
-> }).then(alert); // Thenable.then(alert) 가 실행되는게 아닌 먼저 thenable.then(resolve, reject)가 실행되고 난 결과물(resolve, reject)이 반환되어 then(result => alert(result)) 함수가 실행된다.
+> }).then(alert);
 > ~~~
 
 ## fetch와 체이닝 함께 응용하기
-> * fetch 함수는 url을 입력으로 받고, 해당 url로 네트워크 요청을 보낸다.
-> * 해당 url의 서버가 응답을 보내면 fetch 함수는 Promise 객체를 리턴하며, excutor 함수에서 resolve(response) 함수를 실행한다.
+> * fetch 함수는 url을 입력으로 받고, 해당 **url로 네트워크 요청**을 보낸다.
+> * 해당 url의 서버가 응답을 보내면 fetch 함수는 **Promise 객체를 리턴**하며, excutor 함수에서 resolve(response) 함수를 실행한다.
 > ~~~js
 > // "jongyeon/test.js" 주소에서 파일을 읽는 요청을 보내고
 > // 해당 파일을 text 형식으로 알림한다.
@@ -253,7 +247,7 @@ sitemap: false
 >     alert(text);
 > });
 > ~~~  
-> * 비동기(Asynchronous)은 항상 promise 객체를 리턴하도록 하는게 좋다.
+> * 비동기(Asynchronous)은 항상 **promise 객체를 리턴하도록** 하는게 좋다.
 > * 현재는 chain을 확장할 계획이 없더라도 나중에는 언제라도 chain 확장을 손쉽게 할 수 있기 때문이다.
 > * 또한 재사용 가능하도록 함수 단위로 분리하는게 좋다.
 > ~~~js
@@ -306,15 +300,6 @@ sitemap: false
 > .catch(error => alert(error.message));
 > ~~~
 > 
-> ### 암시적 try...catch
-> > * reject 함수는 암시적으로 try 구문을 쓰는 것과 동일하다.
-> > ~~~js
-> > new Promise((resolve, reject) => {
-> >   reject(new Error("에러 발생"));  // throw new Error("에러 발생"); 과 동일한 코드이다.
-> > })
-> > ~~~
-> > 
-> 
 > ### 에러 다시 던지기
 > > * 일반 try...catch 구문에서는 catch 구문에서 에러를 분석하고, 처리할 수 없는 에러라고 판단이 되면 에러를 다시 던질 때가 있다.
 > > * Promise에서도 이와 유사한 일을 할 수 있다.
@@ -336,10 +321,10 @@ sitemap: false
 > > ~~~
 
 ## Promise의 API
-> * Promise 객체는 5가지 메소드(all, allSettled, race, resolve, reject)를 가지고 있다.
+> * Promise 객체는 5가지 메소드(all, allSettled, race, resolve, reject)를 가지고 있다. (resolve, reject...?)
 > 
 > ### Promise.all()
-> > * 여러 개의 Promise들을 동시에 실행시키고 모든 Promise가 준비될 때까지 기다릴려고 할 때 사용한다.
+> > * **여러 개의 Promise들을 동시에 실행**시키고 모든 Promise가 준비될 때까지 기다릴려고 할 때 사용한다.
 > > * 예를 들면 여러 개의 URL에 동시에 요청을 보내고, 다운로드가 모두 완료된 후에 일괄적으로 처리할 때 쓸 수 있다.
 > > * Promise.all 메소드에 들어가는 순서에 따라 출력이 된다.
 > > ~~~js
@@ -367,7 +352,7 @@ sitemap: false
 > > }.then(responses => Promise.all(responses.map(r => r.json())))
 > > .then(users => users.forEach(user => alert(user.name)));
 > > ~~~
-> > * Promise.all에 전달되는 Promise 중 하나라도 거부되면, Promise.all이 반환하는 Promise는 에러와 함께 거부된다.
+> > * Promise.all에 전달되는 Promise 중 **하나라도 거부**되면, Promise.all이 반환하는 **Promise는 에러와 함께 거부**된다.
 > > * 에러가 발생하면 정상적으로 이행된 Promise도 무시된다.
 > > ~~~js
 > > Promise.all([
@@ -376,7 +361,7 @@ sitemap: false
 > >   new Promise((resolve, reject) => setTimeout(() => resolve(2), 1000))
 > > ]).catch(alert);
 > > ~~~
-> > * Promise.all은 Promise 객체가 아닌 일반 value도 입력으로 받는다. 입력받은 value 들은 그대로 resolve(value)가 실행된다.
+> > * Promise.all은 Promise 객체가 아닌 일반 **value도 입력으로 받는다**. 입력받은 value 들은 그대로 **resolve(value)가 실행**된다.
 > > ~~~js
 > > Promise.all([
 > >   new Promise(resolve => setTimeout(() => resolve(1), 1000),
@@ -387,8 +372,8 @@ sitemap: false
 > 
 > ### Promise.allSettled
 > > * Promise.all 메소드는 하나의 Promise 라도 이행에 실패하면 전체 Promise가 이행되지 않는다.
-> > * 이를 해결하기 위해 나온 것이 **allSettled** 메소드이며, 몇개의 Promise가 이행되지 않더라도 then 메소드가 실행된다.
-> > * allSettled 메소드는 결과로 출력된 배열의 요소들은 두개의 property를 가지고 있다.
+> > * 이를 해결하기 위해 나온 것이 **allSettled** 메소드이며, **몇개의 Promise가 이행되지 않더라도 then 메소드가 실행**된다.
+> > * allSettled 메소드는 결과로 출력된 **배열의 요소들은 두개의 property**를 가지고 있다.
 > > * 응답에 성공했을 경우 - {status:"fulfilled", value:result}
 > > * 응답에 실패했을 경우 - {status:"rejected", reason:error}
 > > ~~~js
@@ -411,7 +396,7 @@ sitemap: false
 > > ~~~
 > 
 > ### Promise.race
-> > * 여러 Promise를 입력으로 받은 후에 가장 먼저 실행되는(background에서 가장 먼저 위로 콜되는) Promise를 반환한다.
+> > * 여러 Promise를 입력으로 받은 후에 **가장 먼저 실행**되는(background에서 가장 먼저 위로 콜되는) Promise를 반환한다.
 > > ~~~js
 > > Promise.race([
 > >     new Promise((resolve, reject) => setTimeout(() => resolve(1), 1000)),
@@ -421,7 +406,7 @@ sitemap: false
 > > ~~~
 
 ## Promisification
-> * 콜백 기반의 함수를 Promise 어법상에서도 돌아가도록 만들어주는 것.
+> * 콜백 기반의 함수를 Promise 어법상에서도 돌아가도록 만들어주는 것, 감싸 안은 것.
 > ~~~js
 > // 콜백 기반의 함수
 > // usage :
@@ -453,7 +438,6 @@ sitemap: false
 > function promisify(f) {
 >     return function(...args) {
 >         return new Promise((resolve, reject) => {
->             console.log(this);
 >             function callback(err, result) {
 >                 if (err) {
 >                     reject(err);
