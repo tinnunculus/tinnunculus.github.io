@@ -8,6 +8,9 @@ sitemap: false
 [1] <https://ko.javascript.info/class-inheritance>  
 * * *  
 
+* toc
+{:toc}
+
 ## super
 > * 상속한 클래스의 **메소드**를 사용하고 싶을 때 super를 이용한다.
 > * 혹은 prototype 객체의 **메소드**를 사용하고 싶을 때 super를 이용한다.
