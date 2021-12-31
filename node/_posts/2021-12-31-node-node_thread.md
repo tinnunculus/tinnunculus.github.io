@@ -5,7 +5,6 @@ sitemap: false
 ---
 
 **참고**  
-[1] <https://thebook.io/080229/ch01/02/>  
 * * *  
 
 * toc
