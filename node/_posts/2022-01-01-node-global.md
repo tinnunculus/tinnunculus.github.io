@@ -1,6 +1,6 @@
 ---
 layout: post
-title: standard object and module in node
+title: global object and method
 sitemap: false
 ---
 
