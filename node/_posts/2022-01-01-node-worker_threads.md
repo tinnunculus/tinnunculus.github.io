@@ -1,6 +1,6 @@
 ---
 layout: post
-title: worker threads module
+title: worker_threads module
 sitemap: false
 ---
 
