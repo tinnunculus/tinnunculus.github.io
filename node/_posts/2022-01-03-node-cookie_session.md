@@ -1,6 +1,6 @@
 ---
 layout: post
-title: http server
+title: cookie and session
 sitemap: false
 ---
 
