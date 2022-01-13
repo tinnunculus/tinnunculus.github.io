@@ -1,6 +1,6 @@
 ---
 layout: post
-title: formdata
+title: [js] formdata
 sitemap: false
 ---
 

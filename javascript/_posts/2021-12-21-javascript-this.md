@@ -1,6 +1,6 @@
 ---
 layout: post
-title: this 
+title: [js] this 
 sitemap: false
 ---
 

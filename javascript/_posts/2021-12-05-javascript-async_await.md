@@ -1,6 +1,6 @@
 ---
 layout: post
-title: async, await
+title: [js] async, await
 sitemap: false
 ---
 

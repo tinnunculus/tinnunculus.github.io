@@ -52,7 +52,7 @@ author:
 menu:
   - title:             PAPER
     url:               /paper/
-  - title:             JAVASCRIPT
+  - title:             JAVASCRIPT, NODE
     url:               /javascript/
   - title:             NODE.JS
     url:               /node/

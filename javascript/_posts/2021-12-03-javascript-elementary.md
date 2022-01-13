@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Javascript in web browser
+title: [js] javascript in web browser
 sitemap: false
 ---
 
@@ -50,7 +50,13 @@ sitemap: false
 > > **3. Body 태그의 맨 끝에 넣는 방법**  
 > > **body** 태그 바로 앞에 스크립트 태그를 넣음으로써 **head, body**가 모두 로딩된 이후에 스크립트가 로딩되도록 한다.  
 > > * 1, 3번 방식은 html DOM이 로드되기 전까지는 script의 로딩과 파싱이 완전히 차단된다. 이는 사이트를 느리게 만드는 중요한 성능 문제를 야기할 수 있다.
-> > * 2번 방식의 asyn를 사용하면 자바스크립트 소스파일의 로딩되는 순서를 보장하지 못한다. 순서를 보장하기 위해서는 defer 속성을 사용하면 된다.  
+> > * 2번 방식의 asyn를 사용하면 자바스크립트 소스파일의 로딩되는 순서를 보장하지 못한다. 순서를 보장하기 위해서는 defer 속성을 사용하면 된다.
+> > * 자바스크립트 소스 파일의 로딩되는 순서는 중요하다. 먼저 로딩되는 코드들(함수, 변수, 객체 등등)을 그 다음 로딩되는 파일에서 import하지 않아도 암묵적으로 쓸 수 있다.
+> > ~~~js
+> > // sequelize.js 파일에서 axios 객체를 import 명시하지 않아도 쓸 수 있다.
+> > <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+> > <script src="/sequelize.js"></script>
+> > ~~~
 > > ```js
 > > // 1, 2, 3번이 순서대로 실행된다는 보장 X
 > > <script async src="1.js"></script>

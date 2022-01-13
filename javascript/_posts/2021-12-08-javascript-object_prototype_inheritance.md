@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Object, Prototype, Inheritance
+title: [js] object, prototype, inheritance
 sitemap: false
 ---
 
@@ -45,8 +45,19 @@ sitemap: false
 > >     this.hobby = "간식먹기",
 > >     this.play = function { alert("야옹~~"); }
 > > }
-> > obj3 = new Sarang();    
+> > obj3 = new Sarang();
 > > ```
+> ### 객체는 기본적으로 참조형이다.
+> > * 자바스크립트에서 객체는 기본적으로 참조형이다.
+> > * 즉 실제의 객체는 하나만 존재하고 객체의 이름(변수)들이 해당 객체를 참조하고 있는 것이다.
+> > * 그렇기 때문에 의도하지 않은 값이 바뀌는 것에 주의해야 한다.
+> > * 복사를 하기 위해서는 얕은 복사 혹은 깊은 복사를 해야만 한다.
+> > ~~~js
+> > const A = {a: 1, b: 2};
+> > const B = A;
+> > B.a = 100;
+> > console.log(A.a); // 100 
+> > ~~~
 > 
 > ### 객체의 property flag
 > > * 객체의 property는 값(value)뿐만 아니라 **flag라 불리는 특별한 속성 세 가지**를 갖는다.

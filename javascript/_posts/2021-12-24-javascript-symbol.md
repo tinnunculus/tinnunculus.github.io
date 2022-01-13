@@ -1,6 +1,6 @@
 ---
 layout: post
-title: symbol
+title: [js] symbol
 sitemap: false
 ---
 
