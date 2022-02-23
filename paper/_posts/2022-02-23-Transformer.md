@@ -55,7 +55,7 @@ sitemap: false
 > >   K: m * d_k \\[1em]
 > >   V: m * d_v \\[1em]
 > >   Attention: n * d_v \\[1em]
-> >   Attention(Q, K, V) &= softmax(\frac{QK^T}{\sqrt{d_k}})V
+> >   Attention(Q, K, V) &= softmax(\frac{QK^T}{\sqrt{d_k}})V \\[1em]
 > > \end{aligned}
 > > $$
 > 
@@ -66,7 +66,7 @@ sitemap: false
 > > $$
 > > \begin{aligned} %!!15
 > >   MultiHead(Q, K, V) &= Concat(head_1, ..., head_h)W^O \\[1em]
-> >     head_i &= Attention(QW^Q_i, KW^K_i, VW^V_i)
+> >     head_i &= Attention(QW^Q_i, KW^K_i, VW^V_i) \\[1em]
 > > \end{aligned}
 > > $$
 > 
@@ -86,7 +86,7 @@ sitemap: false
 >   x &: n * d \\[1em]
 >   W_1 &: d * (d*4) \\[1em]
 >   W_2 &: (d*4) * n \\[1em]
->   FFN(x) &= max(0, xW_1 + b_1)W_2 + b_2
+>   FFN(x) &= max(0, xW_1 + b_1)W_2 + b_2 \\[1em]
 > \end{aligned}
 > $$
 
@@ -101,7 +101,7 @@ sitemap: false
 > \begin{aligned} %!!15
 >   d &: \text{dimension of vector} \\[1em]
 >   PE_(pos, 2i) &= sin(\frac{pos}{10000^{2i/d}}) \\[1em]
->   PE_(pos, 2i+1) &= cos(\frac{pos}{10000^{2i/d}})
+>   PE_(pos, 2i+1) &= cos(\frac{pos}{10000^{2i/d}}) \\[1em]
 > \end{aligned}
 > $$
 
@@ -112,7 +112,7 @@ sitemap: false
 > $$
 > \begin{aligned} %!!15
 >   입력 &: <sos>, word_1, word_2, ..., word_n \\[1em]
->   출력 &: word_1, word_2, ..., word_n, <eof>
+>   출력 &: word_1, word_2, ..., word_n, <eof> \\[1em]
 > \end{aligned}
 > $$
 > 
