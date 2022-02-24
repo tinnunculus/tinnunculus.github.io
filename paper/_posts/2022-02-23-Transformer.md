@@ -21,7 +21,7 @@ sitemap: false
 > * 이 논문에서는 Sequential한 RNN이나 Convolution을 **전혀 사용하지 않은** 오로지 **Attention operation만을 사용**하여 모델을 구성하였고 좋은 결과를 보여주었다.
 
 ## Model Architecture, Transformer
-> <p align="center"><img width="550" src="/assets/img/paper/transformer/1.png"></p>
+> <p align="center"><img width="450" src="/assets/img/paper/transformer/1.png"></p>
 > * 기존의 다른 Sequential 모델의 기본적인 구조 **Encoder-Decoder 구조**를 채택한다.
 > * Encoder는 입력 sequence of symbol representation :  $$ (x_1, ..., x_n) $$을 continuous representation $$ (z_1, ..., z_n) $$으로 매핑시킨다.
 > * Decoder는 continuous representation $$ (z_1, ..., z_n) $$을 output sequence $$ (y_1, ..., y_n) $$으로 매핑시킨다.
