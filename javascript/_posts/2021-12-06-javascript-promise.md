@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [js] promise
+title: Js- promise
 sitemap: false
 ---
 

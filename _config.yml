@@ -54,8 +54,6 @@ menu:
     url:               /paper/
   - title:             JAVASCRIPT, NODE
     url:               /javascript/
-  - title:             NODE.JS
-    url:               /node/
   - title:             WEBASSEMBLY
     url:               /webassembly/
   - title:             CODE ANALYSIS

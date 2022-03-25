@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [js] javascript in web browser
+title: Js- javascript in web browser
 sitemap: false
 ---
 

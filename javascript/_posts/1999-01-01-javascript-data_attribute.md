@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [js] data attribute
+title: Js- data attribute
 sitemap: false
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [node] ajax and rest api
+title: Node- ajax and rest api
 sitemap: false
 ---
 

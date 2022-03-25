@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [js] object, prototype, inheritance
+title: Js- object, prototype, inheritance
 sitemap: false
 ---
 

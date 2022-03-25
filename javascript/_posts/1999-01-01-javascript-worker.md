@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [js] worker
+title: Js- worker
 sitemap: false
 ---
 
