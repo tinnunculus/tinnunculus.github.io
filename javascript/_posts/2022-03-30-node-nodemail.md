@@ -14,7 +14,7 @@ sitemap: false
 > * SMTP 방식이 뭔지는 모르겟지만 tcp를 이용해서 메일 서버와 연결을 한 뒤에 메일을 전송하는 방법이다.
 > * 메일 서버와 연결 하기 위해서는 **createTransport** 메소드를 이용해야 한다.
 > * 메일 서버와의 연결은 한번만 해도 되므로 라우트에서 **transporter를 매번 생성하지 않도록 하자**.
-> * <p align="center"><img width="200" src="/assets/img/javascript/nodemail/1.png"></p>
+> * <p align="center"><img width="300" src="/assets/img/javascript/nodemail/1.png"></p>
 > ~~~js
 > let transporter = nodemailer.createTransport(options[, defaults]);
 > ~~~
