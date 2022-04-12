@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Hierarchical Multi-Scale Attention for Semantic Segmentation
+title: Hierachical HR-net
 sitemap: false
 ---
 

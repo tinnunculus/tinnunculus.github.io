@@ -60,7 +60,7 @@ menu:
     url:               /code_anaysis/
   - title:             CS
     url:               /cs/
-  - title:             C++
+  - title:             C++, CUDA
     url:               /cpp/
 
 # Add links to the footer.

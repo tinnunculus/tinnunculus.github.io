@@ -1,8 +1,8 @@
 ---
 layout: list
-title: C++
+title: C++, CUDA
 slug: cpp
 description: >
-    C++ 이야기
+    C++ 와 Cuda 이야기
 menu: true
 ---
