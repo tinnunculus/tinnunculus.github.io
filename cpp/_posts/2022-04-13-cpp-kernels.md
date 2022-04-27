@@ -48,7 +48,8 @@ sitemap: false
 >     MatAdd<<<numBlocks, threadsPerBlock>>>(A, B, C);
 >     // blockIdx : 0 ~ 63
 >     // threadIdx : 0 ~ 15
->     // blockDim : 64
+>     // blockDim : 16
+>     // blackDim은 block에 존재하는 thread 수를 나타내나 보다. 
 > }
 > ~~~
 > <p align="center"><img width="450" src="/assets/img/cuda/basics/1.png"></p>
