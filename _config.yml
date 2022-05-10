@@ -56,8 +56,6 @@ menu:
     url:               /javascript/
   - title:             WEBASSEMBLY
     url:               /webassembly/
-  - title:             CODE ANALYSIS
-    url:               /code_anaysis/
   - title:             CS
     url:               /cs/
   - title:             C++, CUDA
