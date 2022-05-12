@@ -10,7 +10,7 @@ sitemap: false
 * * *  
 
 **코드**  
-<https://github.com/tinnunculus/MaskFormer/blob/main/maskformer.ipynb>    
+<https://github.com/tinnunculus/MaskFormer/blob/master/maskformer.ipynb>    
 * * *  
 
 * toc
