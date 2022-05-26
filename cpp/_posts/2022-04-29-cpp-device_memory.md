@@ -14,17 +14,17 @@ sitemap: false
 ## Cuda Runtime Initialization
 * Cuda runtime을 위한 명확한 initialization function은 존재하지 않는다. 
 * 모든 코드는 host에서 실행되며, 어떤 runtime function이 실행되면 그때서야 Cuda가 runtime에 들어선다.
-* 첫번째 runtime function이 실행되면 시스템 각각의 device에 primary context가 생성되며, 함수가 실행된다.
+* 첫번째 runtime function이 실행되면 **시스템** 각각의 **device에 primary context가 생성되며**, 함수가 실행된다.
 * device의 primary context는 [driver API](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#interoperability-between-runtime-and-driver-apis)를 통해서 접근할 수 있다.
 * host에서 $$ cudaDeviceReset() $$ 함수를 콜하면 해당 device의 primary context를 없앨 수 있다.
 
 
 ## Device memory
 * Cuda 프로그래밍 모델은 시스템이 각각의 memory를 가진 host와 device로 이루어져 있다.
-* Cuda runtime은 host와 device 각각의 메모리에 데이터를 할당, 해제, 복사, 전송 등의 처리를 할 수 있다.
-* Device memory는 linear memory나 CUDA arrays를 통해서 할당될 수 있다. 일반적으로 사용되는 것은 linear memory이며, CUDA arrays는 Texture, Surface 메모리 할당시 필요로 한다.
-* Linear memory는 일반적으로 사용하는 single unified address space 주소체계이다. 
-* Linear memory는 일반적으로 $$ cudaMalloc() $$ 함수를 통해서 할당되고, $$ cudaFree() $$ 함수를 통해서 해제되고, $$ cudaMemcpy() $$ 함수를 통해서 host memory와 device memory 간의 데이터 전송이 이루어진다.
+* Cuda runtime은 **host와 device 각각의 메모리**에 데이터를 **할당, 해제, 복사, 전송** 등의 처리를 할 수 있다.
+* Device memory는 **linear memory**나 **CUDA arrays**를 통해서 할당될 수 있다. 일반적으로 사용되는 것은 **linear memory**이며, CUDA arrays는 Texture, Surface 메모리 할당시 필요로 한다.
+* Linear memory는 일반적으로 사용하는 **single unified address space 주소체계이다.** 
+* Linear memory는 일반적으로 **$$ cudaMalloc() $$ 함수**를 통해서 할당되고, **$$ cudaFree() $$ 함수를 통해서 해제**되고, **$$ cudaMemcpy() $$ 함수**를 통해서 host memory와 device memory 간의 **데이터 전송**이 이루어진다.
 
 ~~~cpp
 // Device code
@@ -85,7 +85,7 @@ int main()
     ...
 }
 ~~~
-* host와 device간에 global 변수에 데이터 전송하는 방법은 아래와 같다.
+* host와 device간에 **global 변수**에 데이터 **전송**하는 방법은 아래와 같다.
 * \__constant__, \__device__ 와 Symbol 메소드를 사용하면 된다.
 ~~~cpp
 __constant__ float constData[256];
@@ -102,5 +102,3 @@ float* ptr;
 cudaMalloc(&ptr, 256 * sizeof(float));
 cudaMemcpyToSymbol(devPointer, &ptr, sizeof(ptr));
 ~~~
-
-## Shared memory
