@@ -63,8 +63,8 @@ sitemap: false
 ## Multi-scale features
 * 이전의 MaskFormer와는 다르게 Mask2Former에서는 Pixel decoder의 최종 출력 feature map만이 아닌 중간중간의 layer로 부터 나온 feature map을 활용한다. MaskFormer는 low resolution feature map만을 사용하였다.
 * pixel-decoder로 부터 1/32, 1/16, 1/8 크기의 feature map을 추출한다. **1/4는 추출하지 않는데 1/8 feature map을 단순히 upsampling 하여서 per-pixel embeddings**를 만든다. 즉 1/4 feature map은 transformer decoder에 들어가지 않고 mask를 뽑는데에만 사용된다. 
-* 거기에 고정된 sinusoidal positional embedding을 더한다. $$ e_{pos} \in R^{H_lW_l \times C}
-* 거기에 scale-level embedding도 곱한다. $$ e_{lvl} \in R^{1 \times C}
+* 거기에 고정된 sinusoidal positional embedding을 더한다. $$ e_{pos} \in R^{H_lW_l \times C} $$
+* 거기에 scale-level embedding도 곱한다. $$ e_{lvl} \in R^{1 \times C} $$
 * 이 세개의 레이어를 Transformer decoder에 L번 반복해서 넣으며, 그 결과로 Transformer decoder의 layer 수는 총 3L개가 존재하게 된다.
 
 ## Optimization improvements
@@ -75,5 +75,6 @@ sitemap: false
 * 전체적인 학습 방법은 기존의 MaskFormer와 동일하다.
 * hungarian maching과 objective function에 쓰인 **mask loss를 개선했다.**
 * 기존의 mask loss는 **모든 픽셀에 대해서 distance를 계산하였지만** 여기서는 **임의의 픽셀을 추출해서** 그 픽셀에 대해서만 distance를 계산하였다.
-* maching을 위한 mask loss를 계산할 시에는 모두 동일한 위치의 pixel을 sampling 했으며, 학습을 위한 mask loss 계산을 위해서는 mask마다 다른 pixel group을 sampling 하였다. 이유는 효율성 때문이지 않을까 생각한다. maching 계산에 필요한 mask loss 계산은 너무 많으니...
+* **maching**을 위한 mask loss를 계산할 시에는 **uniform** 하게 **모두 동일한 위치**의 pixel을 sampling 했으며, **학습**을 위한 mask loss 계산을 위해서는 uniform 하지 않고 foreground에 더 중점적으로 sampling을 했으며 mask마다 다른 pixel group을 sampling 하였다. 
+* sampling시에 사용한 함수로는 **grid_sample** 함수를 사용하였다. 중복의 픽셀을 선택할 수도 있지만 이 논문에서는 이미지 크기의 비율을 줄이는 것이 아닌 **고정된 픽셀 수**를 샘플리 하였기에 샘플링 수 보다 이미지 크기가 작을 수도 있다. 그렇기에 매 **샘플링 마다 독립시행**으로 샘플링을 진행하였다.
 * 1/3 수준으로 메모리가 절약했지만 퍼포먼스에는 영향을 미치지 않았다.
