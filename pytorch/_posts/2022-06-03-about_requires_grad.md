@@ -72,6 +72,7 @@ print(x is y.grad_fn._saved_self)  # True... 참조형으로 저장되는 모습
 
 * intermediate tensor의 in-place operation은 파이토치에서 오류를 내보내지 않는다. 그렇다고 파이토치에서 in-place operation을 사용하는 것을 권하지는 않는다. 그럼 어떻게 intermediate tensor에서는 in-place operation이 가능한걸까??
 * 기본적으로 requires_grad가 True인 tensor는 operation실행 시 gradient graph을 그리게 되고 gradient function와 함께 saved tensor를 저장한다. 하지만 in-place operation은 자기 자신의 tensor의 값을 바꿔버린다. 그러면 saved tensor와 operation 결과의 tensor는 동일한 객체지만 값이 달라져야하는 현상이 생긴다. pytorch에서는 이 문제를 자체적으로 해결해 주는데 input tensor를 clone하여 saved tensor로 저장하고 input tensor는 그대로 operation을 계산하여 출력된다. 사실 이 문제 때문에 파이토치는 leaf tensor에서 in-place operation을 사용하지 못하게 한 것도 있는데 intermediate tensor에게는 자동으로 해결해주는 것을 보니 leaf tensor를 더 중요시 여기나보다. 물론 leaf tensor에서도 똑같이 해결해준다면 leaf tensor가 없어져서 graph의 개념이 상실할 수 있다. 
+<p align="center"><img src="/assets/img/pytorch/requires/8.png"></p>  
 
 ## tip
 * 모델의 파라미터는 tensor 객체가 아닌 nn.Parameters() 객체를 가리켜야한다. nn.Parameters()는 tensor를 wrap한 것으로 tensor와 동일한데 후에 model.parameters()를 통해 해당 모델의 nn.Parameters()객체를 제너레이터형태로 끌어모을 수 있다.
