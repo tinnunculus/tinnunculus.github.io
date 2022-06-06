@@ -56,8 +56,6 @@ menu:
     url:               /javascript/
   - title:             WEBASSEMBLY
     url:               /webassembly/
-  - title:             CS
-    url:               /cs/
   - title:             C++, CUDA
     url:               /cpp/
   - title:             Pytorch
